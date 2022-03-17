@@ -9,5 +9,5 @@ npm i -g nodemon
 2. npm start
 
 
-ORM:  https://sequelize.org/master/manual/getting-started.html
+ODM:https://mongoosejs.com/docs/guide.html  
 expressJS : https://expressjs.com/en/starter/installing.html
