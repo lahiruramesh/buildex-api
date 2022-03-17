@@ -1,3 +1,6 @@
+const {UserModel} = require('../models/index');
+const {apiResponse} = require('../utils/common');
+
 const login = (req, res, next) => {
     try {
         return res.send('testing2222');
@@ -14,16 +17,33 @@ const logout = (req, res, next) => {
     }
 }
 
-const authController = (req, res, next) => {
+const register = async (req, res, next) => {
     try {
-        return res.send('Success');
+        const {firstName, lastName, email, mobile, roles} = req.body;
+
+        console.log('req', req);
+        const user = UserModel.constructor({
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            mobile: mobile,
+            roles: roles
+        });
+
+        await user.save();
+        if(user) {
+            return res.send(apiResponse(200, 'user created Success', []));
+        }
+        return res.send(apiResponse(800, 'user not created',[]));
+
     }catch (e) {
-        console.log('error', e);
+        return  res.send(apiResponse(800, 'exeception', e.message));
     }
 }
 
 
 module.exports = {
     login,
-    logout
+    logout,
+    register
 }
