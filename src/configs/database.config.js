@@ -1,5 +1,5 @@
 const databaseConfig = {
-    url: 'localhost'
+    url: 'mongodb://localhost:27017/buildex'
 }
 
 module.exports = {

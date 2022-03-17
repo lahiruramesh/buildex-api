@@ -8,10 +8,18 @@ dotenv.config({ path: envFilePath });
 
 const {authRouter} = require('./routers/index');
 
-const app = express()
+const app = express();
+
+// parse requests of content-type - application/json
+app.use(express.json());
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
+
 const port = process.env.SERVER_PORT ? process.env.SERVER_PORT: 3000;
 
 app.use('/auth',authRouter);
+
+require("./routers/Vehicle")(app);
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
