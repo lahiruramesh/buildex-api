@@ -4,6 +4,7 @@ const {UserSchema} = require('./User');
 const {RoleSchema} = require('./Role');
 const {VehicleSchema} = require('./Vehicle');
 const {VehicleImageSchema} = require("./vehicleImage");
+const {VehicleServiceSchema} = require("./VehicleService");
 
 mongoose.connect('mongodb://localhost:27017/buildex').then( (res) => {
  console.log('DB Connected');
@@ -16,5 +17,6 @@ module.exports = {
  UserModel : UserSchema,
  RoleModel : RoleSchema,
  VehicleModel : VehicleSchema,
- vehicleImageModel : VehicleImageSchema
+ vehicleImageModel : VehicleImageSchema,
+ VehicleServiceModel : VehicleServiceSchema
 }
