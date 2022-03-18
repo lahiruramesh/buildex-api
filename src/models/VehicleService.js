@@ -9,6 +9,9 @@ const VehicleServiceSchema = mongoose.model(
         date: Date,
         isActive: Boolean
         
+    },
+    { 
+        timestamps: { currentTime: () => moment().format() } 
     })
 
 ); 
