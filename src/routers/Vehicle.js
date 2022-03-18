@@ -1,9 +1,10 @@
-module.exports = app => {
-    const vehicles = require("../controllers/VehicleController.js");
-    var router = require("express").Router();
+const express = require('express');
+const vehicleRouter = express.Router();
 
-    // Create a new Tutorial
-    router.post("/create", vehicles.create);
+const vehicleController = require('../controllers/VehicleController');
 
-    app.use('/vehicle', router);
-  };
+vehicleRouter.post('/create', vehicleController.create);
+
+module.exports = {
+  vehicleRouter
+}

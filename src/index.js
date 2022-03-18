@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 const envFilePath = path.resolve(__dirname, '.env');
 dotenv.config({ path: envFilePath });
 
-const {authRouter} = require('./routers/index');
+const {authRouter, vehicleRouter, vehicleImageRouter} = require('./routers/index');
 
 const app = express();
 
@@ -17,9 +17,13 @@ app.use(express.urlencoded({ extended: true }));
 
 const port = process.env.SERVER_PORT ? process.env.SERVER_PORT: 3000;
 
+// define routers
 app.use('/auth',authRouter);
+app.use('/vehicle',vehicleRouter);
+app.use("/vehicleImage", vehicleImageRouter);
 
-require("./routers/Vehicle")(app);
+// require("./routers/Vehicle")(app);
+// require("./routers/VehicleImage")(app);
 
 app.get('/', (req, res) => {
     res.send('Hello World!')

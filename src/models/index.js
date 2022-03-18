@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const {UserSchema} = require('./User');
 const {RoleSchema} = require('./Role');
 const {VehicleSchema} = require('./Vehicle');
+const {VehicleImageSchema} = require("./vehicleImage");
 
 mongoose.connect('mongodb://localhost:27017/buildex').then( (res) => {
  console.log('DB Connected');
@@ -14,5 +15,6 @@ mongoose.connect('mongodb://localhost:27017/buildex').then( (res) => {
 module.exports = {
  UserModel : UserSchema,
  RoleModel : RoleSchema,
- VehicleModel : VehicleSchema
+ VehicleModel : VehicleSchema,
+ vehicleImageModel : VehicleImageSchema
 }
