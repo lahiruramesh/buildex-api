@@ -16,7 +16,11 @@ const VehicleSchema = mongoose.model(
         engineCapacity: Number,
         isActive: Boolean
         
+    },
+    { 
+        timestamps: { currentTime: () => moment().format() } 
     })
+    
 
 ); 
 

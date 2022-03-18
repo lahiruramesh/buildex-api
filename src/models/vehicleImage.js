@@ -9,6 +9,9 @@ const VehicleImageSchema = mongoose.model(
         generatedName: String,
         isActive: Boolean
         
+    },
+    { 
+        timestamps: { currentTime: () => moment().format() } 
     })
 
 ); 
