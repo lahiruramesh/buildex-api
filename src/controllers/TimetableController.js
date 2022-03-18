@@ -11,6 +11,7 @@ exports.create = (req, res) => {
   // }
   // Create a timetable
   const timetable = new TimetableModel(req.body);
+
   // Save timetable in the database
   timetable
     .save(timetable)
@@ -31,13 +32,13 @@ exports.findOne = (req, res) => {
   TimetableModel.findById(id)
     .then(data => {
       if (!data)
-        res.status(404).send({ message: "Not found Vehicle with id " + id });
+        res.status(404).send({ message: "Not found timetable with id " + id });
       else res.send(data);
     })
     .catch(err => {
       res
         .status(500)
-        .send({ message: "Error retrieving Vehicle with id=" + id });
+        .send({ message: "Error retrieving timetable with id=" + id });
     });
 };
 
