@@ -7,7 +7,11 @@ const VehicleImageSchema = mongoose.model(
     new Schema({
         originalname: String,
         generatedName: String,
-        isActive: Boolean
+        isActive: Boolean,
+        vehicle: {
+            type: Schema.Types.ObjectId,
+            ref: "vehicle"
+        }
         
     },
     { 
