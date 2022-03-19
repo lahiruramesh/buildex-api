@@ -6,7 +6,11 @@ const dotenv = require('dotenv');
 const envFilePath = path.resolve(__dirname, '.env');
 dotenv.config({ path: envFilePath });
 
+<<<<<<< HEAD
 const {authRouter, vehicleRouter, vehicleImageRouter,vehicleServiceRouter,feedbackRouter} = require('./routers/index');
+=======
+const {authRouter, vehicleRouter, vehicleImageRouter,timetableRouter} = require('./routers/index');
+>>>>>>> 390a26f9039f5d42e98e97971d2776a01442cffc
 
 const app = express();
 
@@ -21,8 +25,13 @@ const port = process.env.SERVER_PORT ? process.env.SERVER_PORT: 3000;
 app.use('/auth',authRouter);
 app.use('/vehicle',vehicleRouter);
 app.use("/vehicleImage", vehicleImageRouter);
+<<<<<<< HEAD
 app.use("/vehicleService", vehicleServiceRouter);
 app.use("/feedback", feedbackRouter);
+=======
+app.use("/timetable", timetableRouter);
+
+>>>>>>> 390a26f9039f5d42e98e97971d2776a01442cffc
 
 // require("./routers/Vehicle")(app);
 // require("./routers/VehicleImage")(app);
