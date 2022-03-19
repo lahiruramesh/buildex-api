@@ -5,10 +5,10 @@ exports.create = (req, res) => {
     console.log(req.body);
 
     // Validate request
-  // if (!req.body.registrationNumber) {
-  //   res.status(400).send({ message: "Content can not be empty!" });
-  //   return;
-  // }
+  if (!req.body.startTime) {
+    res.status(400).send({ message: "Content can not be empty!" });
+    return;
+  }
   // Create a timeslot
   const timeslot = new TimeslotModel(req.body);
 
