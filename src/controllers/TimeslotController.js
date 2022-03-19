@@ -1,4 +1,4 @@
-const TimetableModel = require("../models").TimetableModel;
+const TimeslotModel = require("../models").TimeslotModel;
 
 exports.create = (req, res) => {
 
@@ -9,19 +9,19 @@ exports.create = (req, res) => {
   //   res.status(400).send({ message: "Content can not be empty!" });
   //   return;
   // }
-  // Create a timetable
-  const timetable = new TimetableModel(req.body);
+  // Create a timeslot
+  const timeslot = new TimeslotModel(req.body);
 
-  // Save timetable in the database
-  timetable
-    .save(timetable)
+  // Save timeslot in the database
+  timeslot
+    .save(timeslot)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the timetable."
+          err.message || "Some error occurred while creating the time slot."
       });
     });
   
@@ -29,16 +29,16 @@ exports.create = (req, res) => {
 
 exports.findOne = (req, res) => {
   const id = req.params.id;
-  TimetableModel.findById(id)
+  TimeslotModel.findById(id)
     .then(data => {
       if (!data)
-        res.status(404).send({ message: "Timetable Not found with id " + id });
+        res.status(404).send({ message: "Time slot Not found with id " + id });
       else res.send(data);
     })
     .catch(err => {
       res
         .status(500)
-        .send({ message: "Error retrieving timetable with id=" + id });
+        .send({ message: "Error retrieving time slot with id=" + id });
     });
 };
 
@@ -49,17 +49,17 @@ exports.update = (req, res) => {
     });
   }
   const id = req.params.id;
-  TimetableModel.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+  TimeslotModel.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then(data => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update Timetable with id=${id}. Maybe Timetable was not found!`
+          message: `Cannot update time slot with id=${id}. Maybe Time slot was not found!`
         });
-      } else res.send({ message: "Timetable was updated successfully." });
+      } else res.send({ message: "Time slot was updated successfully." });
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Timetable with id=" + id
+        message: "Error updating time slot with id=" + id
       });
     });
 };
