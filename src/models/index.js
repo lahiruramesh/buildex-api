@@ -8,6 +8,11 @@ const {VehicleServiceSchema} = require("./VehicleService");
 const {FeedbackSchema} = require("./Feedback");
 const {TimetableSchema} = require('./Timetable');
 
+const {ServiceCenterSchema} = require('./ServiceCenter');
+
+
+const {TimeslotSchema} = require('./Timeslot');
+
 
 
 mongoose.connect('mongodb://localhost:27017/buildex').then( (res) => {
@@ -25,5 +30,10 @@ module.exports = {
  VehicleServiceModel : VehicleServiceSchema,
  FeedbackModel : FeedbackSchema,
  TimetableModel : TimetableSchema,
+
+ ServiceCenterModel : ServiceCenterSchema,
+
+ TimeslotModel : TimeslotSchema,
+
 
 }
