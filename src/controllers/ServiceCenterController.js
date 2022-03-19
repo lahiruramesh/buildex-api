@@ -56,12 +56,21 @@ exports.update = (req, res) => {
           message: "Error updating Tutorial with id=" + id
         });
       });
-  };
+};
 
 exports.get= (req, res) => {
-    VehicleModel.collection('servicecenters').find().toArray()
-      .then(results => {
-        console.log(results)
+    ServiceCenterModel.find()
+    .then(data => {
+        if (!data) {
+          res.status(404).send({
+            message: `Cannot get Tutorial . Maybe Tutorial was not found!`
+          });
+        } else res.send(data);
       })
-      .catch(error => console.error(error))
-  };
+      .catch(err => {
+        res.status(500).send({
+          message: "Error getting Tutorial"
+        });
+      });
+};
+
