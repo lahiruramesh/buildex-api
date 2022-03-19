@@ -32,7 +32,7 @@ exports.findOne = (req, res) => {
   TimetableModel.findById(id)
     .then(data => {
       if (!data)
-        res.status(404).send({ message: "Not found timetable with id " + id });
+        res.status(404).send({ message: "Timetable Not found with id " + id });
       else res.send(data);
     })
     .catch(err => {
@@ -53,13 +53,13 @@ exports.update = (req, res) => {
     .then(data => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found!`
+          message: `Cannot update Timetable with id=${id}. Maybe Timetable was not found!`
         });
-      } else res.send({ message: "Tutorial was updated successfully." });
+      } else res.send({ message: "Timetable was updated successfully." });
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Tutorial with id=" + id
+        message: "Error updating Timetable with id=" + id
       });
     });
 };
