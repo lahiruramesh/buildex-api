@@ -19,9 +19,9 @@ module.exports = {
     vehicleServiceRouter,
     feedbackRouter,
     timetableRouter,
+    timeslotRouter,
 
     serviceCenterRouter,
 
-    timeslotRouter,
 
 };

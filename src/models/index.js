@@ -7,11 +7,11 @@ const {VehicleImageSchema} = require("./vehicleImage");
 const {VehicleServiceSchema} = require("./VehicleService");
 const {FeedbackSchema} = require("./Feedback");
 const {TimetableSchema} = require('./Timetable');
+const {TimeslotSchema} = require('./Timeslot');
 
 const {ServiceCenterSchema} = require('./ServiceCenter');
 
 
-const {TimeslotSchema} = require('./Timeslot');
 
 
 
@@ -30,10 +30,10 @@ module.exports = {
  VehicleServiceModel : VehicleServiceSchema,
  FeedbackModel : FeedbackSchema,
  TimetableModel : TimetableSchema,
+ TimeslotModel : TimeslotSchema,
 
  ServiceCenterModel : ServiceCenterSchema,
 
- TimeslotModel : TimeslotSchema,
 
 
 }
