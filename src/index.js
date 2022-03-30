@@ -30,10 +30,10 @@ app.use("/vehicleImage", vehicleImageRouter);
 app.use("/vehicleService", vehicleServiceRouter);
 app.use("/feedback", feedbackRouter);
 app.use("/timetable", timetableRouter);
+app.use("/timeslot", timeslotRouter);
 
 app.use("/serviceCenter", serviceCenterRouter);
 
-app.use("/timeslot", timeslotRouter);
 
 
 
