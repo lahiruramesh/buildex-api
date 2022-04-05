@@ -11,8 +11,9 @@ const {TimeslotSchema} = require('./Timeslot');
 
 const {ServiceCenterSchema} = require('./ServiceCenter');
 
+const db = {};
 
-
+db.ROLES = ["user", "admin", "moderator"];
 
 
 mongoose.connect('mongodb://localhost:27017/buildex').then( (res) => {
@@ -31,7 +32,7 @@ module.exports = {
  FeedbackModel : FeedbackSchema,
  TimetableModel : TimetableSchema,
  TimeslotModel : TimeslotSchema,
-
+ db: db,
  ServiceCenterModel : ServiceCenterSchema,
 
 
