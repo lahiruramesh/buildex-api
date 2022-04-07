@@ -21,8 +21,7 @@ const register = async (req, res, next) => {
     try {
         const {firstName, lastName, email, mobile, roles} = req.body;
 
-        console.log('req', req);
-        const user = UserModel.constructor({
+        const user = new UserModel({
             firstName: firstName,
             lastName: lastName,
             email: email,
@@ -31,7 +30,7 @@ const register = async (req, res, next) => {
         });
 
         await user.save();
-        if(user) {
+        if(user._id) {
             return res.send(apiResponse(200, 'user created Success', []));
         }
         return res.send(apiResponse(800, 'user not created',[]));
