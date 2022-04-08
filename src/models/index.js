@@ -9,6 +9,7 @@ const {FeedbackSchema} = require("./Feedback");
 const {TimetableSchema} = require('./Timetable');
 
 const {ServiceCenterSchema} = require('./ServiceCenter');
+const {ServiceCenterImageSchema} = require('./ServiceCenterImage');
 
 
 const {TimeslotSchema} = require('./Timeslot');
@@ -30,10 +31,7 @@ module.exports = {
  VehicleServiceModel : VehicleServiceSchema,
  FeedbackModel : FeedbackSchema,
  TimetableModel : TimetableSchema,
-
  ServiceCenterModel : ServiceCenterSchema,
-
+ ServiceCenterImageModel :ServiceCenterImageSchema,
  TimeslotModel : TimeslotSchema,
-
-
 }
