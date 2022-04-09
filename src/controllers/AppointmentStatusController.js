@@ -2,9 +2,9 @@ const AppointmentStatusModel = require("../models").AppointmentStatusModel;
 
 exports.create = (req, res) => {
 
-  // Create a Appointment Status
+  // Create an Appointment Status
   const appointmentStatus = new AppointmentStatusModel(req.body);
-  // Save Tutorial in the database
+  // Save appointment status in the database
   appointmentStatus
     .save(appointmentStatus)
     .then(data => {
