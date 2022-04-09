@@ -7,7 +7,7 @@ const envFilePath = path.resolve(__dirname, '.env');
 dotenv.config({ path: envFilePath });
 
 const {authRouter, vehicleRouter, vehicleImageRouter,vehicleServiceRouter,feedbackRouter,serviceCenterRouter,timetableRouter,} = require('./routers/index');
-const { timeslotRouter} = require('./routers/index');
+const { timeslotRouter,appointmentRouter} = require('./routers/index');
 const app = express();
 
 // parse requests of content-type - application/json
@@ -26,7 +26,7 @@ app.use("/feedback", feedbackRouter);
 app.use("/timetable", timetableRouter);
 app.use("/serviceCenter", serviceCenterRouter);
 app.use("/timeslot", timeslotRouter);
-
+app.use("/appointment", appointmentRouter);
 
 
 // require("./routers/Vehicle")(app);
