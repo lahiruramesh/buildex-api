@@ -10,6 +10,7 @@ const {TimetableSchema} = require('./Timetable');
 const {TimeslotSchema} = require('./Timeslot');
 
 const {ServiceCenterSchema} = require('./ServiceCenter');
+const {ServiceCenterImageSchema} = require('./ServiceCenterImage');
 
 const db = {};
 
@@ -34,7 +35,5 @@ module.exports = {
  TimeslotModel : TimeslotSchema,
  db: db,
  ServiceCenterModel : ServiceCenterSchema,
-
-
-
+ ServiceCenterImageModel :ServiceCenterImageSchema,
 }
