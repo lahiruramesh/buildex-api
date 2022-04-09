@@ -7,6 +7,7 @@ const {timetableRouter} = require("./Timetable");
 const {serviceCenterRouter} = require("./ServiceCenter");
 const {serviceCenterImageRouter} = require("./ServiceCenterImage");
 const {timeslotRouter} = require("./Timeslot");
+const {appointmentStatusRouter} = require("./AppointmentStatus");
 
 
 module.exports = {
@@ -22,6 +23,7 @@ module.exports = {
     timeslotRouter,
     serviceCenterImageRouter,
     serviceCenterRouter,
+    appointmentStatusRouter
 
 
 };
