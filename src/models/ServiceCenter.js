@@ -6,7 +6,11 @@ const ServiceCenterSchema = mongoose.model(
     "serviceCenter", 
     new Schema({
         name: String,
-        address: String
+        address: String,
+        owner: {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }
     },
     { 
         timestamps: { currentTime: () => moment().format() } 
