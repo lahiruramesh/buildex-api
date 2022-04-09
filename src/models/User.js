@@ -1,8 +1,13 @@
 const {Schema} = require('mongoose');
 const moment = require('moment-timezone');
+const { default: mongoose } = require('mongoose');
 
-const UserSchema = new Schema({
-    firstName: {
+const UserSchema = mongoose.model(
+    "user", 
+    
+    new Schema({
+    
+        firstName: {
         type: Schema.Types.String
     },
     lastName: {
@@ -41,7 +46,8 @@ const UserSchema = new Schema({
         default: true,
     }
 
-}, { timestamps: { currentTime: () => moment().format() } });
+}, { timestamps: { currentTime: () => moment().format() } })
+);
 
 module.exports = {
     UserSchema
