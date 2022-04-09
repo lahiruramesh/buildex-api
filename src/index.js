@@ -3,6 +3,7 @@ const express = require('express')
 require('./models');
 const path = require('path');
 const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
 const envFilePath = path.resolve(__dirname, '.env');
 dotenv.config({ path: envFilePath });
 
@@ -16,6 +17,7 @@ const app = express();
 
 // parse requests of content-type - application/json
 app.use(express.json());
+//app.use(bodyParser);
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
