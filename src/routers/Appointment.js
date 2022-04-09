@@ -4,7 +4,7 @@ const appointmentRouter = express.Router();
 const AppointmentController = require('../controllers/AppointmentController');
 
 appointmentRouter.post('/create', AppointmentController.create);
-//vehicleImageRouter.get("/:id", vehicleImageController.findOne);
+appointmentRouter.get("/getByServiceCenter/:id", AppointmentController.getByServiceCenter);
 
 module.exports = {
     appointmentRouter
