@@ -7,13 +7,14 @@ const {VehicleImageSchema} = require("./vehicleImage");
 const {VehicleServiceSchema} = require("./VehicleService");
 const {FeedbackSchema} = require("./Feedback");
 const {TimetableSchema} = require('./Timetable');
+const {TimeslotSchema} = require('./Timeslot');
 
 const {ServiceCenterSchema} = require('./ServiceCenter');
 const {ServiceCenterImageSchema} = require('./ServiceCenterImage');
 
+const db = {};
 
-const {TimeslotSchema} = require('./Timeslot');
-
+db.ROLES = ["user", "admin", "moderator"];
 
 
 mongoose.connect('mongodb://localhost:27017/buildex').then( (res) => {
@@ -31,7 +32,8 @@ module.exports = {
  VehicleServiceModel : VehicleServiceSchema,
  FeedbackModel : FeedbackSchema,
  TimetableModel : TimetableSchema,
+ TimeslotModel : TimeslotSchema,
+ db: db,
  ServiceCenterModel : ServiceCenterSchema,
  ServiceCenterImageModel :ServiceCenterImageSchema,
- TimeslotModel : TimeslotSchema,
 }

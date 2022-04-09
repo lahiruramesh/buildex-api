@@ -1,26 +1,22 @@
-const {Schema} = require('mongoose');
+const {Schema, mongoose} = require('mongoose');
 const moment = require('moment-timezone');
 
-const UserSchema = new Schema({
-    firstName: {
-        type: Schema.Types.String
-    },
-    lastName: {
-        type: Schema.Types.String
-    },
+const UserSchema = mongoose.model("User", new Schema({
+    firstName: String,
+    lastName: String,
     mobile: {
-        type: Schema.Types.String,
+        type: String,
         index: true,
     },
     email: {
-        type: Schema.Types.String,
+        type: String,
         index: true,
     },
     roles: [
         {
-            type: Schema.Types.ObjectId,
-            Ref: 'Role',
-            autopopulate: true
+            type: Schema.Types.Mixed,
+        //    Ref: 'Role',
+        //    autopopulate: true
         }
     ],
     jwtTokens: {
@@ -33,15 +29,15 @@ const UserSchema = new Schema({
         default: [],
     },
     locked: {
-        type: Schema.Types.Boolean,
+        type: Boolean,
         default: false,
     },
     isActive: {
-        type: Schema.Types.Boolean,
+        type: Boolean,
         default: true,
     }
 
-}, { timestamps: { currentTime: () => moment().format() } });
+}, { timestamps: { currentTime: () => moment().format() } }));
 
 module.exports = {
     UserSchema
