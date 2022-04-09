@@ -21,6 +21,12 @@ const AppointmentSchema = mongoose.model(
             type: Schema.Types.ObjectId,
             ref: "serviceCenter"
         },
+        appointmentStatus : {
+            type: Schema.Types.ObjectId,
+            ref: "AppointmentStatus"
+        },
+
+        requestDate : {type: String, default: Date} //DD-MM-YYYY
     },
         {
             timestamps: { currentTime: () => moment().format() }
