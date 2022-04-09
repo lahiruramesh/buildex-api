@@ -7,6 +7,7 @@ serviceCenterRouter.post('/create', serviceCenterController.create);
 serviceCenterRouter.get("", serviceCenterController.get);
 serviceCenterRouter.put("/:id", serviceCenterController.update);
 serviceCenterRouter.get("/load-by-owner/:id", serviceCenterController.getByOwner);
+serviceCenterRouter.get("/load-by-center-id/:id", serviceCenterController.findByServiceCenterId);
 
 module.exports = {
     serviceCenterRouter

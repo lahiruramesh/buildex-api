@@ -93,3 +93,17 @@ exports.getByOwner = (req, res) => {
     });
 };
 
+exports.findByServiceCenterId = (req, res) => {
+  const id = req.params.id;
+  ServiceCenterModel.findById(id)
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "Not found service center with id " + id });
+      else res.send(data);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: "Error retrieving service center with id=" + id });
+    });
+};

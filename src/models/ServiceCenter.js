@@ -10,7 +10,11 @@ const ServiceCenterSchema = mongoose.model(
         owner: {
             type: Schema.Types.ObjectId,
             ref: "User"
-        }
+        },
+        availableTimeslots : [{
+            type: Schema.Types.ObjectId,
+            ref: "timeslot"
+        }]
     },
     { 
         timestamps: { currentTime: () => moment().format() } 
