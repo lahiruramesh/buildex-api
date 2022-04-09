@@ -7,7 +7,11 @@ const {timetableRouter} = require("./Timetable");
 const {serviceCenterRouter} = require("./ServiceCenter");
 const {serviceCenterImageRouter} = require("./ServiceCenterImage");
 const {timeslotRouter} = require("./Timeslot");
+
+const {appointmentRouter} = require("./Appointment");
+
 const {appointmentStatusRouter} = require("./AppointmentStatus");
+
 
 
 module.exports = {
@@ -17,12 +21,13 @@ module.exports = {
     vehicleServiceRouter,
     feedbackRouter,
     timetableRouter,
-
     serviceCenterRouter,
-
     timeslotRouter,
     serviceCenterImageRouter,
     serviceCenterRouter,
+
+    appointmentRouter,
+
     appointmentStatusRouter
 
 

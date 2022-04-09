@@ -8,10 +8,12 @@ const {VehicleServiceSchema} = require("./VehicleService");
 const {FeedbackSchema} = require("./Feedback");
 const {TimetableSchema} = require('./Timetable');
 const {TimeslotSchema} = require('./Timeslot');
+
 const {AppointmentStatusSchema} = require("./AppointmentStatus");
 
 const {ServiceCenterSchema} = require('./ServiceCenter');
 const {ServiceCenterImageSchema} = require('./ServiceCenterImage');
+const {AppointmentSchema} = require('./Appointment');
 
 const db = {};
 
@@ -37,5 +39,9 @@ module.exports = {
  db: db,
  ServiceCenterModel : ServiceCenterSchema,
  ServiceCenterImageModel :ServiceCenterImageSchema,
+
+ AppointmentModel :AppointmentSchema,
+
  AppointmentStatusModel : AppointmentStatusSchema
+
 }
