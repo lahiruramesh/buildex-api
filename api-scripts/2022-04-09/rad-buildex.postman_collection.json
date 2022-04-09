@@ -1,0 +1,583 @@
+{
+	"info": {
+		"_postman_id": "a2dc9c84-6158-44b4-ad23-d24e98576173",
+		"name": "rad-buildex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Vehicle",
+			"item": [
+				{
+					"name": "http://localhost:3001/vehicle/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"registrationNumber\": \"17-5001\",\r\n    \"make\": \"Toyota\",\r\n    \"model\": \"cARINA\",\r\n    \"yom\": 1991,\r\n    \"mileage\": 24567554,\r\n    \"gearType\": \"Manual\",\r\n    \"fuelType\": \"Petrol\",\r\n    \"options\": \"mint condition\",\r\n    \"engineCapacity\": 1450,\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/vehicle/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"vehicle",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3001/vehicle/",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"62335d3b8f9e0d5c0e86ea8c\",\r\n    \"registrationNumber\": \"16-5000\",\r\n    \"make\": \"Toyota\",\r\n    \"model\": \"cARINA AT150\",\r\n    \"yom\": 1983,\r\n    \"mileage\": 24567554,\r\n    \"gearType\": \"Manual\",\r\n    \"fuelType\": \"Petrol\",\r\n    \"options\": \"mint condition\",\r\n    \"engineCapacity\": 1450,\r\n    \"isActive\": true,\r\n    \"__v\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/vehicle/62335d3b8f9e0d5c0e86ea8c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"vehicle",
+								"62335d3b8f9e0d5c0e86ea8c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vehicle find one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/vehicle/62335d3b8f9e0d5c0e86ea8c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"vehicle",
+								"62335d3b8f9e0d5c0e86ea8c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vehicle load all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3001/vehicle",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"vehicle"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicle Image",
+			"item": [
+				{
+					"name": "http://localhost:3001/vehicleImage/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"originalname\": \"pabodha\",\r\n    \"generatedName\": \"pabodha generated\",\r\n    \"vehicle\" : {\r\n        \"_id\": \"62335d3b8f9e0d5c0e86ea8c\"\r\n    },\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/vehicleImage/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"vehicleImage",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3001/vehicleImage/6234b74c9daa350818fd3b8e",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/vehicleImage/6234b74c9daa350818fd3b8e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"vehicleImage",
+								"6234b74c9daa350818fd3b8e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "service center",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Battaramulla Service Center\",\r\n    \"address\" : \"Battaramulla\",\r\n    \"owner\" : {\r\n        \"_id\": \"62510aa32d1572c2c6050114\"\r\n    },\r\n    \"availableTimeslots\" : [\"625115e7545cc9300feced6b\", \"625115f9545cc9300feced6d\", \"6251161a545cc9300feced6f\"]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/serviceCenter/create",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"serviceCenter",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "load by owner",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:3001/serviceCenter/load-by-owner/62510aa32d1572c2c6050114",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"serviceCenter",
+								"load-by-owner",
+								"62510aa32d1572c2c6050114"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "load by center id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/serviceCenter/load-by-center-id/62511cf6143ba66b31f4b99c",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"serviceCenter",
+								"load-by-center-id",
+								"62511cf6143ba66b31f4b99c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3001/serviceCenter/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"name\": \"PS\",\r\n        \"address\": \"Colombo 02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/serviceCenter/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"serviceCenter",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3001/serviceCenter/get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/serviceCenter/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"serviceCenter",
+								"get"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "auth register user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"firstName\" : \"Kaweesha\", \r\n\"lastName\" : \"Hasarinda\", \r\n\"email\" : \"kaweeshahasarinda@gmail.com\", \r\n\"mobile\" : \"0711785876\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3001/auth/logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Timetable",
+			"item": [
+				{
+					"name": "create timetable",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"month\": \"January\",\r\n \"day\": \"Saturday\",\r\n \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/timetable/create",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"timetable",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "timeslots",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startTime\": \"04.00PM\",\r\n    \"endTime\": \"06.00PM\",\r\n    \"isActive\": true,\r\n    \"timetable\" : {\r\n      \"_id\" : \"625114a1469bd2dc97dfa25f\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/timeslot/create",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"timeslot",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "appointment status",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"REJECTED\",\r\n    \"label\" : \"Rejected\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/appointmentStatus/create",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"appointmentStatus",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointment",
+			"item": [
+				{
+					"name": "Create appointment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\" : {\r\n        \"_id\" : \"62510aa32d1572c2c6050114\"\r\n    },\r\n    \"timeslot\": {\r\n        \"_id\" : \"625114a1469bd2dc97dfa25f\"\r\n    },\r\n    \"serviceCenter\": {\r\n        \"_id\" : \"62511cf6143ba66b31f4b99c\"\r\n    },\r\n    \"appointmentStatus\" : {\r\n        \"_id\" : \"62512375bf3b2565faa0eac2\"\r\n    },\r\n    \"requestDate\" : \"10-04-2022\"\r\n        \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/appointment/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"appointment",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by service center",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/appointment/getByServiceCenter/625114a1469bd2dc97dfa25f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"appointment",
+								"getByServiceCenter",
+								"625114a1469bd2dc97dfa25f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicle Service",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"description\": \"test description\",\r\n        \"date\": \"2022/01/09\",\r\n        \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/vehicleService/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"vehicleService",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Feedback",
+			"item": [
+				{
+					"name": "http://localhost:3001/feedback/create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rate\": \"90\",\r\n        \"description\": \"good\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/feedback/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"feedback",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
