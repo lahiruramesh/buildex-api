@@ -5,8 +5,8 @@ const { default: mongoose } = require('mongoose');
 const TimeslotSchema = mongoose.model(
     "timeslot",
     new Schema({
-        startTime: Date,
-        endTime: Date,
+        startTime: String,
+        endTime: String,
         isActive: Boolean,
         timetable: {
             type: Schema.Types.ObjectId,

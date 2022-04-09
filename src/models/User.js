@@ -1,28 +1,28 @@
-const {Schema} = require('mongoose');
+const {Schema, mongoose} = require('mongoose');
 const moment = require('moment-timezone');
+const jwt = require('jsonwebtoken');
 
 const UserSchema = new Schema({
-    firstName: {
-        type: Schema.Types.String
-    },
-    lastName: {
-        type: Schema.Types.String
-    },
+    firstName: String,
+    lastName: String,
     mobile: {
-        type: Schema.Types.String,
+        type: String,
         index: true,
     },
     email: {
-        type: Schema.Types.String,
+        type: String,
         index: true,
     },
     roles: [
         {
-            type: Schema.Types.ObjectId,
-            Ref: 'Role',
-            autopopulate: true
+            type: Schema.Types.Mixed,
+        //    Ref: 'Role',
+        //    autopopulate: true
         }
     ],
+    password: {
+        type: String
+    },
     jwtTokens: {
         type: [String],
         select: false,
@@ -33,16 +33,29 @@ const UserSchema = new Schema({
         default: [],
     },
     locked: {
-        type: Schema.Types.Boolean,
+        type: Boolean,
         default: false,
     },
     isActive: {
-        type: Schema.Types.Boolean,
+        type: Boolean,
         default: true,
-    }
+    },
 
-}, { timestamps: { currentTime: () => moment().format() } });
+});
+
+UserSchema.methods.generateToken = function() {
+    const {_id, email, roles} = this;
+    return jwt.sign(
+        {
+           _id,
+            email,
+            roles
+        },
+        process.env.JWT_SECRET,
+        {expiresIn: process.env.TOKEN_EXPIRY_TIME}
+    );
+}
 
 module.exports = {
-    UserSchema
+    UserSchema : mongoose.model('users', UserSchema)
 };
