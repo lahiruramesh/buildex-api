@@ -9,6 +9,8 @@ dotenv.config({ path: envFilePath });
 
 const { timeslotRouter,appointmentRouter} = require('./routers/index');
 
+const initDataController = require("./controllers/initDataController");
+
 const {authRouter, vehicleRouter, vehicleImageRouter,vehicleServiceRouter,feedbackRouter,serviceCenterRouter,timetableRouter, appointmentStatusRouter} = require('./routers/index');
 
 const app = express();
@@ -45,3 +47,6 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`App listening on port ${port}`)
 })
+
+// add initial data to the database
+initDataController.insertInitData();
