@@ -11,6 +11,10 @@ const VehicleImageSchema = mongoose.model(
         vehicle: {
             type: Schema.Types.ObjectId,
             ref: "vehicle"
+        },
+        img: {
+                data: Buffer,
+                contentType: String
         }
         
     },
