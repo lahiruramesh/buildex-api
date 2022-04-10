@@ -8,6 +8,7 @@ serviceCenterRouter.get("", serviceCenterController.get);
 serviceCenterRouter.put("/:id", serviceCenterController.update);
 serviceCenterRouter.get("/load-by-owner/:id", serviceCenterController.getByOwner);
 serviceCenterRouter.get("/load-by-center-id/:id", serviceCenterController.findByServiceCenterId);
+serviceCenterRouter.post('/get-timeslots', serviceCenterController.getTimeslotsByServiceId);
 
 module.exports = {
     serviceCenterRouter
