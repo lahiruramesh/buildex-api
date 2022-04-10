@@ -21,7 +21,7 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/uploads", express.static(path.join('uploads')));
+app.use("/uploads", express.static(path.join(__dirname, 'uploads')));
 
 const port = process.env.SERVER_PORT ? process.env.SERVER_PORT: 3000;
 
