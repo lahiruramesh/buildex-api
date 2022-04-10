@@ -45,3 +45,23 @@ exports.getByServiceCenter = (req, res) => {
         });
       });
   };
+
+  exports.getByStatusAndServiceCenter = (req, res) => {
+
+    const id = req.params.id;
+    const status = req.params.status;
+  
+    AppointmentModel.find({"serviceCenter" : id,"appointmentStatus":status})
+    .then(data => {
+        if (!data) {
+          res.status(404).send({
+            message: `Cannot get Tutorial . Maybe Tutorial was not found!`
+          });
+        } else res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error getting Tutorial"
+        });
+      });
+  };

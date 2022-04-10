@@ -5,6 +5,7 @@ const AppointmentController = require('../controllers/AppointmentController');
 
 appointmentRouter.post('/create', AppointmentController.create);
 appointmentRouter.get("/getByServiceCenter/:id", AppointmentController.getByServiceCenter);
+appointmentRouter.get("/getByStatusAndServiceCenter/:id/:status", AppointmentController.getByStatusAndServiceCenter);
 
 module.exports = {
     appointmentRouter
