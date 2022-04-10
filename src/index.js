@@ -7,8 +7,6 @@ const bodyParser = require('body-parser');
 const envFilePath = path.resolve(__dirname, '.env');
 dotenv.config({ path: envFilePath });
 
-
-
 const { timeslotRouter,appointmentRouter} = require('./routers/index');
 
 const {authRouter, vehicleRouter, vehicleImageRouter,vehicleServiceRouter,feedbackRouter,serviceCenterRouter,timetableRouter, appointmentStatusRouter} = require('./routers/index');
@@ -34,13 +32,8 @@ app.use("/feedback", feedbackRouter);
 app.use("/timetable", timetableRouter);
 app.use("/serviceCenter", serviceCenterRouter);
 app.use("/timeslot", timeslotRouter);
-
 app.use("/appointment", appointmentRouter);
-
 app.use("/appointmentStatus", appointmentStatusRouter);
-
-
-
 
 // require("./routers/Vehicle")(app);
 // require("./routers/VehicleImage")(app);
@@ -48,8 +41,6 @@ app.use("/appointmentStatus", appointmentStatusRouter);
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
-
-
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`)
