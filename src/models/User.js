@@ -43,8 +43,10 @@ const UserSchema = new Schema({
 
 });
 
-UserSchema.methods.generateToken = function() {
-    const {_id, email, roles} = this;
+UserSchema.methods.generateToken = function(user) {
+    const {_id, email, roles} = user;
+    console.log('email', email);
+    console.log('id', _id);
     return jwt.sign(
         {
            _id,

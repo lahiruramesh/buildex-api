@@ -13,23 +13,37 @@ const login = async (req, res, next) => {
             return res.send(apiResponse(400, 'Password incorrect'));
         }
 
-        const token = UserModel.schema.methods.generateToken();
+        const token = UserModel.schema.methods.generateToken(user);
         user.jwtTokens.push(token);
 
         await user.save();
 
-        return res.send(apiResponse(800, 'OK',{'accessToken': token}));
+        return res.send(apiResponse(200, 'OK',{'accessToken': token}));
 
     }catch (e) {
-        return  res.send(apiResponse(200, 'exception', e.message));
+        return  res.send(apiResponse(800, 'exception', e.message));
     }
 }
 
-const logout = (req, res, next) => {
-    try{
-        return res.send('testing');
+const profile = async (req, res, next) => {
+    try {
+        req.user.password = '';
+        req.user.jwtTokens = '';
+        return res.send(apiResponse(200, 'OK',req.user));
     }catch (e) {
-        console.log('error', e);
+        return  res.send(apiResponse(800, 'exception', e.message));
+    }
+}
+
+const logout =  async (req, res, next) => {
+    try{
+        const user = req.user;
+        const userObj = await UserModel.findOne({'_id': user._id}).select('+jwtTokens').exec();
+        userObj.jwtTokens = [];
+        await userObj.save();
+        return res.send(apiResponse(200, 'OK','Logout successfully'));
+    }catch (e) {
+        return  res.send(apiResponse(800, 'exception', e.message));
     }
 }
 
@@ -62,6 +76,7 @@ const register = async (req, res, next) => {
 
 module.exports = {
     login,
+    profile,
     logout,
     register
 }

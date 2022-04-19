@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const authConfig = require('../configs/auth.config');
-const {UnAuthorizedException, NotFoundException, BadRequestException} = require('../exceptions/index');
 const {UserModel} = require('../models/index');
+const {apiResponse} = require('../utils/common');
 
 const {db} = require('../models/index');
 
@@ -9,31 +9,30 @@ const verifyToken = async (req, res, next) => {
     try{
         const authHeader = req.headers.authorization;
 
-        if(!authHeader) return next( new UnAuthorizedException('Authorization Headers required'));
+        if(!authHeader) return res.send(apiResponse(800, 'Authorization header is required'));
 
-        if(authHeader.split(' ')[0] !== 'Bearer') return next( new UnAuthorizedException('Token should be bearer'));
+        if(authHeader.split(' ')[0] !== 'Bearer') return res.send(apiResponse(800, 'Token should be bearer'));
 
         const token = authHeader.split(' ')[1];
 
-        if(!token) return next(new UnAuthorizedException('Token is required'));
-
-        const payload = jwt.verify(token, authConfig.secret);
-
+        if(!token) return res.send(apiResponse(800, 'Token is required'));
+        const payload = jwt.verify(token, process.env.JWT_SECRET);
+        console.log('payload', payload);
         const user = await UserModel.findOne({ _id: payload._id }).select('+jwtTokens').exec();
 
-        if(!user) return next(new NotFoundException('User not found'));
+        if(!user) return  res.send(apiResponse(800, 'User Not Found'));
 
-        if(!user.jwtTokens.includes(token)) return next( new BadRequestException('Already logout!! please login again'));
+        if(!user.jwtTokens.includes(token)) return res.send(apiResponse(800, 'Already logged out!! please login'));
 
-        if(user.locked) return next( new BadRequestException('User locked!'));
+        if(user.locked) return res.send(apiResponse(800, 'User locked'));
 
-        if(!user.isActive) return next(new BadRequestException('User account locked. please contact admin'));
+        if(!user.isActive) return res.send(apiResponse(800, 'Your account is locked.'));
 
         req.user = user;
         return next();
 
     }catch (e) {
-        return next(new UnAuthorizedException(e.message));
+        return res.send(apiResponse(800, 'exception', e.message));
     }
 }
 
